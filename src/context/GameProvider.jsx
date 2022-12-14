@@ -34,7 +34,7 @@ const GameProvider = ({ children }) => {
 
 		return sameValueCards;
 	};
-
+	
 	const findCardPlayerOne = () => {
 		if (getSameValueCards(playerOne).length === 10) {
 			return true;
@@ -58,6 +58,12 @@ const GameProvider = ({ children }) => {
 	const requestCards = async () => {
 		const cards = await DeckOfCardsAPI.getCards(idGame);
 
+		const cardDeletePlayerOne = playerOne.cards.map(
+			card => card.newValue
+		)  
+
+		console.log(cardDeletePlayerOne) 
+		
 		setPlayerOne({ ...playerOne, cards: [...playerOne.cards, cards[0]] });
 		setPlayerTwo({ ...playerTwo, cards: [...playerTwo.cards, cards[1]] });
 

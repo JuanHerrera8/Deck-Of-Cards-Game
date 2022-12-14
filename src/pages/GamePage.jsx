@@ -4,7 +4,16 @@ import Col from 'react-bootstrap/Col';
 import FormPlay from '../components/FormPlay';
 import ListCards from '../components/ListCards';
 import ToastWinner from '../components/ToastWinner';
+import { useNavigate } from 'react-router-dom';
+import useGame from '../hooks/useGame';
 const GamePage = () => {
+
+	const navigate = useNavigate();
+    const { playerOne, playerTwo } = useGame();
+
+    if (playerOne.name === '' || playerTwo.name === '') navigate('/');
+
+
 	return (
 		<>
 			<Container className='my-4'>
