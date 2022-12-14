@@ -6,13 +6,15 @@ import ListCards from '../components/ListCards';
 import ToastWinner from '../components/ToastWinner';
 import { useNavigate } from 'react-router-dom';
 import useGame from '../hooks/useGame';
+
 const GamePage = () => {
 
 	const navigate = useNavigate();
-    const { playerOne, playerTwo } = useGame();
+    const { idGame } = useGame();
 
-    if (playerOne.name === '' || playerTwo.name === '') navigate('/');
+    if (idGame === null) navigate('/');
 
+	
 
 	return (
 		<>

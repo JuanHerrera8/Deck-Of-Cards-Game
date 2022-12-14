@@ -61,22 +61,18 @@ const GameProvider = ({ children }) => {
 		let cardDeletedTwo = 0;
 
 		const cardDeletePlayerOne = () => {
-			console.log(playerOne.cards);
-
-			for (let index = 0; index <= playerOne.cards.length; index++) {
+			 for (let index = 0; index <= playerOne.cards.length; index++) {
 				if (index === 0) {
 					if (
-						playerOne.cards[index + 1].newValue !==
-							playerOne.cards[index].newValue &&
-						playerOne.cards[playerOne.length].newValue !==
-							playerOne.cards[index].newValue &&
+						playerOne.cards[index + 1].newValue !== playerOne.cards[index].newValue &&
+						playerOne.cards[9].newValue !== playerOne.cards[index].newValue &&
 						playerOne.cards[index].newValue !== cards[0].newValue
 					) {
 						console.log(
 							'Valores son diferentes',
 							playerOne.cards[index].newValue,
 							'y',
-							playerOne.cards[playerOne.length].newValue,
+							playerOne.cards[9].newValue,
 							'y',
 							cards[0].newValue
 						);
@@ -85,12 +81,11 @@ const GameProvider = ({ children }) => {
 					} else {
 						console.log('Tiene un vecino o el que llega es parecido.');
 					}
-				} else if (index === playerOne.cards.length) {
+				} else if (index === 9) {
 					if (
-						playerOne.cards[index + 1].newValue !==
-							playerOne.cards[index].newValue &&
+						playerOne.cards[index - 1].newValue !==playerOne.cards[index].newValue &&
 						playerOne.cards[0].newValue !== playerOne.cards[index].newValue &&
-						cards[0] !== playerOne.cards[index].cards[0].newValue
+						cards[0] !== playerOne.cards[index].newValue
 					) {
 						console.log(
 							'Valores son diferentes',
@@ -98,7 +93,7 @@ const GameProvider = ({ children }) => {
 							'y',
 							playerOne.cards[0].newValue,
 							'y',
-							cards[0]
+							cards[0].newValue
 						);
 						cardDeletedOne = playerOne.cards[index].newValue;
 						break;
@@ -107,10 +102,8 @@ const GameProvider = ({ children }) => {
 					}
 				} else {
 					if (
-						playerOne.cards[index + 1].newValue !==
-							playerOne.cards[index].newValue &&
-						playerOne.cards[index - 1].newValue !==
-							playerOne.cards[index].newValue &&
+						playerOne.cards[index + 1].newValue !== playerOne.cards[index].newValue &&
+						playerOne.cards[index - 1].newValue !== playerOne.cards[index].newValue &&
 						playerOne.cards[index].newValue !== cards[0].newValue
 					) {
 						console.log(
@@ -129,37 +122,33 @@ const GameProvider = ({ children }) => {
 				}
 			}
 		};
-		const cardDeletePlayerTwo = () => {
-			console.log(playerOne.cards);
 
+		const cardDeletePlayerTwo = () => {
 			for (let index = 0; index <= playerTwo.cards.length; index++) {
 				if (index === 0) {
 					if (
-						playerTwo.cards[index + 1].newValue !==
-							playerTwo.cards[index].newValue &&
-						playerTwo.cards[playerTwo.length].newValue !==
-							playerTwo.cards[index].newValue &&
+						playerTwo.cards[index + 1].newValue !== playerTwo.cards[index].newValue &&
+						playerTwo.cards[9].newValue !== playerTwo.cards[index].newValue &&
 						playerTwo.cards[index].newValue !== cards[0].newValue
 					) {
 						console.log(
 							'Valores son diferentes',
 							playerTwo.cards[index].newValue,
 							'y',
-							playerTwo.cards[playerTwo.length].newValue,
+							playerTwo.cards[9].newValue,
 							'y',
-							cards[0].newValue
+							cards[1].newValue
 						);
 						cardDeletedTwo = playerTwo.cards[index].newValue;
 						break;
 					} else {
 						console.log('Tiene un vecino o el que llega es parecido.');
 					}
-				} else if (index === playerTwo.cards.length) {
+				} else if (index === 9) {
 					if (
-						playerTwo.cards[index + 1].newValue !==
-							playerTwo.cards[index].newValue &&
+						playerTwo.cards[index - 1].newValue !== playerTwo.cards[index].newValue &&
 						playerTwo.cards[0].newValue !== playerTwo.cards[index].newValue &&
-						cards[0] !== playerTwo.cards[index].cards[0].newValue
+						cards[1] !== playerTwo.cards[index].newValue
 					) {
 						console.log(
 							'Valores son diferentes',
@@ -167,7 +156,7 @@ const GameProvider = ({ children }) => {
 							'y',
 							playerTwo.cards[0].newValue,
 							'y',
-							cards[0]
+							cards[1].newValue
 						);
 						cardDeletedTwo = playerTwo.cards[index].newValue;
 						break;
@@ -176,11 +165,9 @@ const GameProvider = ({ children }) => {
 					}
 				} else {
 					if (
-						playerTwo.cards[index + 1].newValue !==
-							playerTwo.cards[index].newValue &&
-						playerTwo.cards[index - 1].newValue !==
-							playerTwo.cards[index].newValue &&
-						playerTwo.cards[index].newValue !== cards[0].newValue
+						playerTwo.cards[index + 1].newValue !== playerTwo.cards[index].newValue &&
+						playerTwo.cards[index - 1].newValue !== playerTwo.cards[index].newValue &&
+						playerTwo.cards[index].newValue !== cards[1].newValue
 					) {
 						console.log(
 							'Valores son diferentes',
@@ -188,7 +175,7 @@ const GameProvider = ({ children }) => {
 							'y',
 							playerTwo.cards[index + 1].newValue,
 							'y',
-							cards[0].newValue
+							cards[1].newValue
 						);
 						cardDeletedTwo = playerTwo.cards[index].newValue;
 						break;
@@ -260,7 +247,7 @@ const GameProvider = ({ children }) => {
 				showToast,
 				setShowToast,
 				winName,
-				idGame
+				idGame,
 			}}
 		>
 			{children}
